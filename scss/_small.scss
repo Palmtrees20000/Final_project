@@ -24,17 +24,12 @@ body {
 
 /* --------------------------- NAVBAR --------------------------- */
 .navbar {
-    background-color: $blackVoid;
-    padding: 0;
     position: relative;
     width: 100%;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-    border-bottom: 2px solid $spiceGold;
+    z-index: 999;
     
     .nav-bar-wrapper {
-        background-color: $blackVoid;
+        background-color: transparent;
         width: 100%;
         transition: all 0.3s ease;
     }
@@ -43,23 +38,23 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 0.5rem $gutter; // Reduced from 0.75rem
+        padding: 0;
         max-width: $containerMaxWidth;
         margin: 0 auto;
         position: relative;
         transition: padding 0.3s ease;
     }
     
-        .nav-menu {
+    .nav-menu {
         display: none;
         position: absolute;
         left: 0;
-        top: 100%; // Drop down from navbar
+        top: 0;
         flex-direction: column;
-        background-color: $darkBrown; // Dark Brown background
+        background-color: $darkBrown;
         width: 100%;
         max-height: 0;
-        text-align: left; // Left-aligned text
+        text-align: left;
         transition: max-height 0.4s ease-in-out, padding 0.4s ease, background-color 0.3s ease;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
         margin: 0;
@@ -158,7 +153,61 @@ body {
             }
         }
     }
+}
+
+
+
+/* --------------------------- HEADER --------------------------- */
+#headerWrapper {
+    border-bottom: 1px solid $darkBrown;
+    background-color: $darkBrown; // Dark Brown background
+    transition: all 0.3s ease;
+}
+header {
+    display: grid;
+    grid-template-columns: 50px auto 40px;
+    column-gap: $gutter;
+    align-items: center;
+    padding: 1rem $gutter;
+    max-width: $containerMaxWidth;
+    margin: 0 auto;
+    transition: padding 0.3s ease;
+    position: relative;
     
+    // Container for header text (title + slogan)
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; // Left align the text stack
+        gap: 0.1rem; // Small gap between title and slogan
+        transition: gap 0.3s ease;
+        
+        .main-title {
+            font-size: 1.3rem;
+            font-weight: $normalWeight;
+            font-family: $headingFont;
+            color: $spiceGold; // Spice Gold text
+            line-height: 1.2; // Tighter line height
+            transition: font-size 0.3s ease;
+        }
+        
+        .header-slogan {
+            font-size: 0.65rem; // Smaller than main title
+            font-weight: $lightWeight;
+            color: $desertSand; // Desert Sand for hierarchy
+            font-style: italic; // Elegant italic styling
+            line-height: 1;
+            margin-top: -0.1rem; // Pull slightly closer to main title
+            transition: font-size 0.3s ease;
+        }
+    }
+    
+    // Phone number in header
+    .header-phone {
+        display: none;
+    }
+    
+    // Hamburger in header
     .hamburger {
         display: flex;
         flex-direction: column;
@@ -173,7 +222,6 @@ body {
         z-index: 1001;
         position: relative;
         transition: transform 0.3s ease;
-        order: -1;
         
         .bar {
             width: 28px;
@@ -210,73 +258,6 @@ body {
             .bar:nth-child(3) {
                 top: 18px;
                 transform: rotate(-45deg);
-            }
-        }
-    }
-}
-
-
-
-/* --------------------------- HEADER --------------------------- */
-#headerWrapper {
-    border-bottom: 1px solid $darkBrown;
-    background-color: $darkBrown; // Dark Brown background
-    transition: all 0.3s ease;
-}
-header {
-    display: grid;
-    grid-template-columns: 50px auto auto; // Removed hamburger column
-    column-gap: $gutter;
-    align-items: center; //vertically
-    padding: 1rem $gutter; // Increased from .5rem
-    max-width: $containerMaxWidth;
-    margin: 0 auto;
-    transition: padding 0.3s ease;
-    
-    // Container for header text (title + slogan)
-    .header-text {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start; // Left align the text stack
-        gap: 0.1rem; // Small gap between title and slogan
-        transition: gap 0.3s ease;
-        
-        .main-title {
-            font-size: 1.3rem;
-            font-weight: $normalWeight;
-            font-family: $headingFont;
-            color: $spiceGold; // Spice Gold text
-            line-height: 1.2; // Tighter line height
-            transition: font-size 0.3s ease;
-        }
-        
-        .header-slogan {
-            font-size: 0.65rem; // Smaller than main title
-            font-weight: $lightWeight;
-            color: $desertSand; // Desert Sand for hierarchy
-            font-style: italic; // Elegant italic styling
-            line-height: 1;
-            margin-top: -0.1rem; // Pull slightly closer to main title
-            transition: font-size 0.3s ease;
-        }
-    }
-    
-    // Phone number in header
-    .header-phone {
-        display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        
-        a {
-            color: $desertSand;
-            font-size: 0.85rem;
-            font-weight: $normalWeight;
-            white-space: nowrap;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            
-            &:hover {
-                color: $spiceGold;
             }
         }
     }
