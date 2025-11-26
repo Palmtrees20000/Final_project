@@ -1,0 +1,196 @@
+/* --------------------------- NAVBAR - MEDIUM SCREENS --------------------------- */
+.navbar {
+    .nav-bar-wrapper {
+        .nav-container {
+            padding: 0.5rem $gutter;
+            justify-content: flex-start;
+        }
+    }
+    
+    .nav-phone-mobile {
+        display: none; // Hide on medium screens since it's in header
+    }
+    
+    .nav-menu {
+        position: static;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+        width: auto;
+        max-height: none;
+        display: flex;
+        gap: 1.5rem;
+        justify-content: flex-start;
+        padding: 0;
+        overflow: visible;
+        
+        .nav-item {
+            border-bottom: none;
+            position: relative;
+            
+            .nav-link {
+                padding: 0.75rem 1.2rem;
+                border-bottom: none;
+                font-size: 0.95rem;
+            }
+            
+            // Desktop dropdown styling
+            &.dropdown {
+                position: relative;
+                
+                .dropdown-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    min-width: 200px;
+                    background-color: #2a2a2a;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                    border-radius: 0 0 8px 8px;
+                    margin-top: 0;
+                    max-height: none;
+                    overflow: visible;
+                    transition: opacity 0.3s ease, visibility 0.3s ease;
+                    opacity: 0;
+                    visibility: hidden;
+                    
+                    li {
+                        .dropdown-link {
+                            padding: 0.8rem 1.2rem;
+                            font-size: 0.9rem;
+                            
+                            &:hover {
+                                padding-left: 1.5rem;
+                            }
+                        }
+                        
+                        &:last-child .dropdown-link {
+                            border-radius: 0 0 8px 8px;
+                        }
+                    }
+                }
+                
+                // Show dropdown on hover for desktop
+                &:hover {
+                    .dropdown-menu {
+                        display: block;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                    
+                    .dropdown-arrow {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+    
+    .hamburger {
+        display: none; // Hide hamburger on medium+ screens
+    }
+}
+
+/* --------------------------- HERO VIDEO - MEDIUM SCREENS --------------------------- */
+.hero-video-section {
+    .video-container {
+        padding-bottom: 50%;
+        
+        .video-overlay {
+            top: auto;
+            left: $gutter;
+            bottom: $gutter;
+            transform: none;
+            text-align: left;
+            padding: 1.5rem 2rem;
+            max-width: 55%;
+            
+            .page-name {
+                font-size: 2rem;
+            }
+            
+            .hero-subtext {
+                font-size: 1.05rem;
+            }
+        }
+    }
+}
+
+/* --------------------------- HEADER RESPONSIVE - MEDIUM SCREENS --------------------------- */
+header {
+    padding: 1.2rem $gutter;
+    
+    .header-text {
+        .main-title {
+            font-size: 1.5rem; // Slightly larger on medium screens
+        }
+        
+        .header-slogan {
+            font-size: 0.7rem; // Proportionally smaller
+        }
+    }
+    
+    .header-phone a {
+        font-size: 0.95rem;
+    }
+}
+
+
+
+/* --------------------------- MAIN CONTENT - MEDIUM SCREENS --------------------------- */
+main {
+    padding: 0 $gutter;
+}
+
+/* --------------------------- SLOGAN RESPONSIVE - MEDIUM SCREENS --------------------------- */
+main .slogan {
+    font-size: 1.2rem; // Slightly larger on medium screens
+    margin: -0.5rem 0 2rem 0; // More bottom margin for better spacing
+}
+
+/* --------------------------- CARDS SECTION - MEDIUM SCREENS --------------------------- */
+.cards-section {
+    .section-title {
+        padding: 0 $gutter;
+    }
+    
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        padding: 0 $gutter;
+    }
+    
+    .card {
+        .card-image {
+            height: 220px;
+        }
+    }
+}
+
+/* --------------------------- AFFILIATES SECTION - MEDIUM SCREENS --------------------------- */
+.affiliates-section {
+    .section-title {
+        padding: 0 $gutter;
+    }
+    
+    .affiliates-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+        padding: 0 $gutter;
+    }
+    
+    .affiliate-card {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+/* --------------------------- FOOTER - MEDIUM SCREENS --------------------------- */
+footer {
+    padding: 2.5rem $gutter;
+    
+    .footer-locations {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}

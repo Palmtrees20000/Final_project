@@ -1,0 +1,34 @@
+// Dune Color Palette
+$desertSand: #E6C89F;      // Desert Sand - background
+$deepOrange: #D97939;      // Deep Orange - hero accents, overlays
+$darkBrown: #4A2C1A;       // Dark Brown - text, footer
+$spiceGold: #CFA13E;       // Spice Gold - buttons, hover effects
+$fremenBlue: #5D8AA8;      // Fremen Blue - links, card accents
+$blackVoid: #0D0D0D;       // Black Void - text overlay, shadows
+
+// Legacy mappings for compatibility
+$primaryColor: $darkBrown;
+$secondaryColor: $deepOrange;
+$accentColor: $spiceGold;
+$greyColor: $darkBrown;
+$darkColor: $blackVoid;
+
+// Navigation specific colors for contrast compliance
+$activeNavColor: $spiceGold;   // Spice Gold for active nav
+
+// High contrast colors for accessibility
+$highContrastText: $blackVoid;
+$highContrastInput: $darkBrown;
+
+// Dune Typography
+$defaultFont: 'Roboto', 'Arial', 'Helvetica', sans-serif;
+$headingFont: 'Cinzel', 'Georgia', serif;
+$lightWeight: 300;
+$normalWeight: 500;
+$boldWeight: 700;
+$leading: 150%;
+
+$gutter: 10px;
+
+// Container widths for consistent layout
+$containerMaxWidth: 1200px;  

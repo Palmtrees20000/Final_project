@@ -1,0 +1,662 @@
+/* Prevent adjustments of font size after orientation changes in IE on Windows Phone and in iOS.  */
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+
+/*  Apply a natural box layout model to all elements  */
+* {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+} // end all elements
+
+/* --------------------------- BODY --------------------------- */
+body {
+    font-family: $defaultFont;
+    font-weight: $lightWeight;
+    min-width: 320px;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: $desertSand;
+}
+
+/* --------------------------- NAVBAR --------------------------- */
+.navbar {
+    background-color: $blackVoid;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    border-bottom: 2px solid $spiceGold;
+    
+    .nav-bar-wrapper {
+        background-color: $blackVoid;
+        width: 100%;
+        transition: all 0.3s ease;
+    }
+    
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem $gutter; // Reduced from 0.75rem
+        max-width: $containerMaxWidth;
+        margin: 0 auto;
+        position: relative;
+        transition: padding 0.3s ease;
+    }
+    
+        .nav-menu {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 100%; // Drop down from navbar
+        flex-direction: column;
+        background-color: $darkBrown; // Dark Brown background
+        width: 100%;
+        max-height: 0;
+        text-align: left; // Left-aligned text
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease, background-color 0.3s ease;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.5);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        z-index: 999;
+        overflow: hidden;
+        border-bottom: 2px solid $spiceGold;
+        
+        &.active {
+            display: flex;
+            max-height: 100vh;
+            padding: 1rem 0;
+            overflow-y: auto;
+        }
+        
+        .nav-item {
+            margin: 0;
+            position: relative;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: border-bottom 0.3s ease;
+            
+            .nav-link {
+                display: flex; // Use flex to position arrow on right
+                justify-content: space-between; // Arrow on right
+                align-items: center;
+                padding: 1.2rem 1.5rem; // More left padding
+                color: $desertSand;
+                text-decoration: none;
+                font-size: 1.1rem; // Slightly larger font
+                transition: all 0.3s ease;
+                font-family: $headingFont;
+                
+                &:hover {
+                    background-color: rgba(207, 161, 62, 0.2);
+                    color: $spiceGold;
+                }
+                
+                .dropdown-arrow {
+                    font-size: 0.7rem;
+                    transition: transform 0.3s ease;
+                    color: $spiceGold;
+                    margin-left: 0.5rem;
+                }
+            }
+            
+            &.active .nav-link {
+                background-color: rgba(207, 161, 62, 0.4);
+                color: $spiceGold;
+                border-left: 4px solid $spiceGold;
+                font-weight: $boldWeight;
+            }
+            
+            // Dropdown menu
+            &.dropdown {
+                .dropdown-menu {
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;
+                    display: none;
+                    background-color: darken($darkBrown, 5%); // Slightly darker than main menu
+                    max-height: 0;
+                    overflow: hidden;
+                    transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+                    
+                    li {
+                        .dropdown-link {
+                            display: block;
+                            padding: 0.9rem 1.5rem 0.9rem 2.5rem; // More indentation
+                            color: $desertSand;
+                            text-decoration: none;
+                            font-size: 0.95rem;
+                            transition: all 0.3s ease;
+                            border-bottom: 1px solid rgba(230, 200, 159, 0.1);
+                            
+                            &:hover {
+                                background-color: rgba(93, 138, 168, 0.3);
+                                color: $fremenBlue;
+                                padding-left: 3rem;
+                            }
+                        }
+                    }
+                }
+                
+                &.active {
+                    .dropdown-menu {
+                        display: block;
+                        max-height: 500px;
+                        padding: 0.5rem 0;
+                    }
+                    
+                    .dropdown-arrow {
+                        transform: rotate(180deg);
+                    }
+                }
+            }
+        }
+    }
+    
+    .hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        padding: 0;
+        background: transparent;
+        border: none;
+        z-index: 1001;
+        position: relative;
+        transition: transform 0.3s ease;
+        order: -1;
+        
+        .bar {
+            width: 28px;
+            height: 3px;
+            background-color: $spiceGold;
+            transition: all 0.3s ease-in-out;
+            border-radius: 3px;
+            position: absolute;
+            
+            &:nth-child(1) {
+                top: 10px;
+            }
+            
+            &:nth-child(2) {
+                top: 18px;
+            }
+            
+            &:nth-child(3) {
+                top: 26px;
+            }
+        }
+        
+        &.active {
+            .bar:nth-child(1) {
+                top: 18px;
+                transform: rotate(45deg);
+            }
+            
+            .bar:nth-child(2) {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            
+            .bar:nth-child(3) {
+                top: 18px;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+
+
+/* --------------------------- HEADER --------------------------- */
+#headerWrapper {
+    border-bottom: 1px solid $darkBrown;
+    background-color: $darkBrown; // Dark Brown background
+    transition: all 0.3s ease;
+}
+header {
+    display: grid;
+    grid-template-columns: 50px auto auto; // Removed hamburger column
+    column-gap: $gutter;
+    align-items: center; //vertically
+    padding: 1rem $gutter; // Increased from .5rem
+    max-width: $containerMaxWidth;
+    margin: 0 auto;
+    transition: padding 0.3s ease;
+    
+    // Container for header text (title + slogan)
+    .header-text {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; // Left align the text stack
+        gap: 0.1rem; // Small gap between title and slogan
+        transition: gap 0.3s ease;
+        
+        .main-title {
+            font-size: 1.3rem;
+            font-weight: $normalWeight;
+            font-family: $headingFont;
+            color: $spiceGold; // Spice Gold text
+            line-height: 1.2; // Tighter line height
+            transition: font-size 0.3s ease;
+        }
+        
+        .header-slogan {
+            font-size: 0.65rem; // Smaller than main title
+            font-weight: $lightWeight;
+            color: $desertSand; // Desert Sand for hierarchy
+            font-style: italic; // Elegant italic styling
+            line-height: 1;
+            margin-top: -0.1rem; // Pull slightly closer to main title
+            transition: font-size 0.3s ease;
+        }
+    }
+    
+    // Phone number in header
+    .header-phone {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        
+        a {
+            color: $desertSand;
+            font-size: 0.85rem;
+            font-weight: $normalWeight;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: color 0.3s ease;
+            
+            &:hover {
+                color: $spiceGold;
+            }
+        }
+    }
+} // end header
+
+
+/* --------------------------- MAIN CONTENT WRAPPER --------------------------- */
+
+main {
+    max-width: $containerMaxWidth;
+    margin: 0 auto;
+    padding: 0 $gutter;
+    background-color: $desertSand;
+    
+    h1 {
+        padding: 1rem 0 0.5rem 0;
+        font-size: 1.5rem;
+        font-family: $headingFont;
+        color: $darkBrown;
+        font-weight: $normalWeight;
+    }
+    
+    // Slogan/tagline styling
+    .slogan {
+        text-align: center;
+        font-size: 1.1rem;
+        font-style: italic;
+        font-weight: $lightWeight;
+        color: $darkBrown;
+        margin: -0.5rem 0 1.5rem 0;
+        padding: 0;
+        line-height: 1.4;
+    }
+    
+    h2 {
+        padding: 0;
+        font-size: 1.8rem;
+        font-family: $headingFont;
+        color: $darkBrown;
+        font-weight: $normalWeight;
+        margin-bottom: 1rem;
+    }
+    
+    p {
+        padding: 0.5rem 0;
+        color: $darkBrown;
+        line-height: $leading;
+    }
+}// end main
+
+/* --------------------------- HERO VIDEO SECTION --------------------------- */
+.hero-video-section {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background-color: $blackVoid;
+    
+    .video-container {
+        position: relative;
+        width: 100%;
+        height: 0;
+        padding-bottom: 50%;
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            z-index: 1;
+            pointer-events: none;
+            
+            &::-webkit-media-controls {
+                display: none !important;
+            }
+            
+            &::-webkit-media-controls-enclosure {
+                display: none !important;
+            }
+        }
+        
+        .video-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            text-align: center;
+            padding: 1.25rem 1.5rem;
+            color: #f5f5f5;
+            font-family: $headingFont;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            border-radius: 12px;
+            border: 1px solid rgba(194, 168, 120, 0.2);
+            max-width: 88%;
+            width: auto;
+            margin: 0 auto;
+            box-sizing: border-box;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            
+            .page-name {
+                font-size: 1.3rem;
+                font-weight: 600;
+                margin: 0 0 0.6rem 0;
+                color: #C2A878;
+                line-height: 1.3;
+                text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+            }
+            
+            .hero-subtext {
+                font-size: 0.9rem;
+                font-family: $defaultFont;
+                line-height: 1.5;
+                color: #e8e8e8;
+                margin: 0;
+                text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+}
+
+/* --------------------------- CARDS SECTION --------------------------- */
+.cards-section {
+    padding: 3rem 0;
+    background-color: $desertSand;
+    
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        font-family: $headingFont;
+        color: $darkBrown;
+        margin-bottom: 2rem;
+        font-weight: $normalWeight;
+        padding: 0 $gutter;
+    }
+    
+    .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: $containerMaxWidth;
+        margin: 0 auto;
+        padding: 0 $gutter;
+    }
+    
+    .card {
+        background-color: #1a1a1a;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease;
+        
+        &:hover {
+            transform: scale(1.03);
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 220px;
+            background-color: #000;
+            overflow: hidden;
+            
+            .card-photo {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
+        }
+        
+        .card-content {
+            padding: 1rem;
+            color: #C2A878;
+            
+            .card-title {
+                font-family: $headingFont;
+                font-size: 1.2rem;
+                margin: 0 0 0.75rem 0;
+                color: #f5f5f5;
+            }
+            
+            .card-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                
+                li {
+                    margin-bottom: 0.5rem;
+                    font-size: 0.95rem;
+                    line-height: 1.4;
+                    padding-left: 1.5rem;
+                    position: relative;
+                    
+                    &::before {
+                        content: '◆';
+                        position: absolute;
+                        left: 0;
+                        color: $spiceGold;
+                        font-weight: bold;
+                        font-size: 0.9rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/* --------------------------- AFFILIATES SECTION --------------------------- */
+.affiliates-section {
+    padding: 3rem 0;
+    background-color: darken($desertSand, 5%);
+    overflow-x: hidden;
+    width: 100%;
+    box-sizing: border-box;
+    
+    .section-title {
+        text-align: center;
+        font-size: 2rem;
+        font-family: $headingFont;
+        color: $darkBrown;
+        margin-bottom: 2rem;
+        font-weight: $normalWeight;
+        padding: 0 1rem;
+    }
+    
+    .affiliates-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 1.5rem;
+        max-width: $containerMaxWidth;
+        margin: 0 auto;
+        padding: 0 1rem;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    
+    .affiliate-card {
+        background: #f7f1e8;
+        border: 2px solid #5a4632;
+        border-radius: 12px;
+        padding: 1rem;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        position: relative;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        max-width: 22rem;
+        margin: 0 auto;
+        box-sizing: border-box;
+        
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            border-color: $fremenBlue;
+        }
+        
+        .affiliate-logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            max-width: 120px;
+            height: auto;
+            object-fit: contain;
+            padding: 0.25rem;
+            opacity: 0.3;
+            margin: auto;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        h3 {
+            font-family: $headingFont;
+            font-size: 1rem;
+            color: #5a4632;
+            margin: 0;
+            background: none !important;
+            font-weight: $normalWeight;
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+/* --------------------------- FOOTER --------------------------- */
+#footerWrapper {
+    width: 100%;
+    background-color: $darkBrown;
+    border-top: 3px solid $spiceGold;
+}
+
+footer {
+    max-width: $containerMaxWidth;
+    margin: 0 auto;
+    padding: 2rem $gutter;
+    text-align: center;
+    
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+    
+    .footer-phone {
+        width: 100%;
+        
+        .phone-link {
+            display: inline-block;
+            font-size: 1.2rem;
+            font-weight: $normalWeight;
+            font-family: $headingFont;
+            color: $darkBrown;
+            text-decoration: none;
+            padding: 0.75rem 1.5rem;
+            background-color: $spiceGold;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: 2px solid $desertSand;
+            
+            &:hover {
+                background-color: lighten($spiceGold, 10%);
+                transform: scale(1.05);
+            }
+        }
+    }
+    
+    .footer-locations {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        width: 100%;
+    }
+    
+    .location-card {
+        background: rgba(230, 200, 159, 0.15);
+        padding: 1.25rem;
+        border-radius: 8px;
+        border: 1px solid $fremenBlue;
+        
+        .company-name {
+            font-size: 1.1rem;
+            font-weight: $normalWeight;
+            font-family: $headingFont;
+            color: $spiceGold;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .address {
+            font-size: 0.9rem;
+            color: $desertSand;
+            margin: 0;
+            line-height: 1.6;
+            padding-left: 1rem;
+        }
+    }
+    
+    .footer-copyright {
+        width: 100%;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(230, 200, 159, 0.3);
+        
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: $desertSand;
+        }
+    }
+}
+

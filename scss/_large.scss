@@ -1,0 +1,131 @@
+header, main {
+    max-width: $containerMaxWidth;
+    margin: auto;
+    padding: 0 2rem;
+}
+
+header {
+    padding: 1.5rem 2rem;
+    
+    .header-text {
+        .main-title {
+            font-size: 1.7rem;
+        }
+        
+        .header-slogan {
+            font-size: 0.75rem;
+        }
+    }
+    
+    .header-phone a {
+        font-size: 1rem;
+    }
+}
+
+div.parent {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: $containerMaxWidth;
+    margin: 0 auto;
+    padding: 0 2rem;
+    
+    section{
+        grid-template-columns: 200px auto;
+        column-gap: 8px;
+    } 
+}
+
+/* NAVIGATION STUFF GOES HERE  */
+
+/* --------------------------- NAVBAR - LARGE SCREENS --------------------------- */
+.navbar {
+    .nav-container {
+        padding: 0.5rem 2rem;
+    }
+    
+    .nav-menu {
+        gap: 2rem;
+        
+        .nav-item {
+            .nav-link {
+                padding: 0.5rem 1.5rem; // Reduced from 0.75rem 1.8rem
+                font-size: 0.95rem; // Reduced from 1rem
+            }
+        }
+    }
+}
+
+/* --------------------------- HERO VIDEO - LARGE SCREENS --------------------------- */
+.hero-video-section {
+    .video-container {
+        padding-bottom: 50%;
+        
+        .video-overlay {
+            top: auto;
+            left: 2rem;
+            bottom: 2rem;
+            transform: none;
+            text-align: left;
+            padding: 2rem 2.5rem;
+            max-width: 45%;
+            
+            .page-name {
+                font-size: 2.4rem;
+            }
+            
+            .hero-subtext {
+                font-size: 1.1rem;
+            }
+        }
+    }
+}
+
+/* --------------------------- CARDS SECTION - LARGE SCREENS --------------------------- */
+.cards-section {
+    .section-title {
+        padding: 0 2rem;
+    }
+    
+    .cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        padding: 0 2rem;
+    }
+    
+    .card {
+        .card-image {
+            height: 220px;
+        }
+    }
+}
+
+/* --------------------------- AFFILIATES SECTION - LARGE SCREENS --------------------------- */
+.affiliates-section {
+    .section-title {
+        padding: 0 2rem;
+    }
+    
+    .affiliates-container {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        padding: 0 2rem;
+    }
+    
+    .affiliate-card {
+        max-width: none;
+        width: 100%;
+    }
+}
+
+/* --------------------------- FOOTER - LARGE SCREENS --------------------------- */
+footer {
+    padding: 3rem 2rem;
+    
+    .container {
+        gap: 2.5rem;
+    }
+    
+    .footer-locations {
+        gap: 2.5rem;
+    }
+}
