@@ -115,7 +115,7 @@ body {
                     margin: 0;
                     padding: 0;
                     display: none;
-                    background-color: darken($darkBrown, 5%); // Slightly darker than main menu
+                    background-color: #3d2412;
                     max-height: 0;
                     overflow: hidden;
                     transition: max-height 0.4s ease-in-out, padding 0.4s ease;
@@ -166,6 +166,9 @@ body {
 header {
     display: grid;
     grid-template-columns: 50px auto 40px;
+    .hamburger {
+        justify-self: end;
+    }
     column-gap: $gutter;
     align-items: center;
     padding: 1rem $gutter;
@@ -475,7 +478,7 @@ main {
 /* --------------------------- AFFILIATES SECTION --------------------------- */
 .affiliates-section {
     padding: 3rem 0;
-    background-color: darken($desertSand, 5%);
+    background-color: #d9b988;
     overflow-x: hidden;
     width: 100%;
     box-sizing: border-box;
@@ -592,7 +595,7 @@ footer {
             border: 2px solid $desertSand;
             
             &:hover {
-                background-color: lighten($spiceGold, 10%);
+                background-color: #dbb45c;
                 transform: scale(1.05);
             }
         }

@@ -5,6 +5,35 @@ header, main {
 }
 
 header {
+            .header-phone {
+                a {
+                    color: $spiceGold;
+                    font-size: 0.95rem;
+                    font-weight: $normalWeight;
+                    font-family: $headingFont;
+                    background: none;
+                    text-decoration: none;
+                    padding: 0.4rem 1rem;
+                    border-radius: 6px;
+                    transition: color 0.3s ease, background 0.3s ease;
+                    white-space: nowrap;
+                    display: inline-block;
+                    &:hover {
+                        color: $desertSand;
+                        background: $spiceGold;
+                    }
+                }
+            }
+        .hamburger {
+            display: none;
+        }
+        .header-phone {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding-right: 2rem;
+            width: 100%;
+        }
     padding: 1.5rem 2rem;
     
     .header-text {
@@ -39,19 +68,104 @@ div.parent {
 
 /* --------------------------- NAVBAR - LARGE SCREENS --------------------------- */
 .navbar {
+    background-color: $blackVoid;
+    padding: 0;
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: all 0.3s ease;
+    border-bottom: 2px solid $spiceGold;
+    
+    .nav-bar-wrapper {
+        background-color: $blackVoid;
+    }
+    
     .nav-container {
         padding: 0.5rem 2rem;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
     }
     
     .nav-menu {
+        position: static;
+        flex-direction: row;
+        background-color: transparent;
+        box-shadow: none;
+        width: auto;
+        max-height: none;
+        display: flex;
         gap: 2rem;
+        justify-content: flex-start;
+        padding: 0;
+        overflow: visible;
+        border-bottom: none;
         
         .nav-item {
+            border-bottom: none;
+            position: relative;
+            
             .nav-link {
-                padding: 0.5rem 1.5rem; // Reduced from 0.75rem 1.8rem
-                font-size: 0.95rem; // Reduced from 1rem
+                padding: 0.5rem 1.5rem;
+                font-size: 0.95rem;
+                border-bottom: none;
+            }
+            
+            // Desktop dropdown styling
+            &.dropdown {
+                position: relative;
+                
+                .dropdown-menu {
+                    position: absolute;
+                    top: 100%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    min-width: 200px;
+                    background-color: #2a2a2a;
+                    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                    border-radius: 0 0 8px 8px;
+                    margin-top: 0;
+                    max-height: none;
+                    overflow: visible;
+                    transition: opacity 0.3s ease, visibility 0.3s ease;
+                    opacity: 0;
+                    visibility: hidden;
+                    
+                    li {
+                        .dropdown-link {
+                            padding: 0.8rem 1.2rem;
+                            font-size: 0.9rem;
+                            
+                            &:hover {
+                                padding-left: 1.5rem;
+                            }
+                        }
+                        
+                        &:last-child .dropdown-link {
+                            border-radius: 0 0 8px 8px;
+                        }
+                    }
+                }
+                
+                // Show dropdown on hover for desktop
+                &:hover {
+                    .dropdown-menu {
+                        display: block;
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                    
+                    .dropdown-arrow {
+                        transform: rotate(180deg);
+                    }
+                }
             }
         }
+    }
+    
+    .hamburger {
+        display: none;
     }
 }
 
